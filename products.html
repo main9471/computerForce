@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <title>Products - Computer Force</title>
+</head>
+
+<body onload="if(typeof setFooterCurrentYear === 'function') setFooterCurrentYear();">
+
+  <header class="py-3 bg-light border-bottom text-center">
+    <div class="container-fluid">
+      <a href="index.html" class="text-decoration-none">
+        <img src="images/logo.PNG" alt="Computer Force Logo - Quality computing since 1992" style="max-height: 80px;">
+      </a>
+    </div>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Main navigation">
+    <div class="container-fluid custom-nav-container">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
+        aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="products.html" aria-current="page">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-right-icons">
+        <form class="search-box d-none d-lg-flex" role="search" onsubmit="return false;">
+          <input type="text" id="searchInput" placeholder="Search..." aria-label="Search products">
+          <button type="button" onclick="searchProducts()" aria-label="Submit search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+
+        <a class="cart-icon-link" href="shoppingCart.html" aria-label="View shopping cart">
+          <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid mt-4">
+    <div class="row">
+
+      <main class="col-lg-9 col-md-8">
+        <div class="home-hero mb-4">
+          <h1 class="text-primary display-5 fw-bold">Products we sell</h1>
+          <p class="lead">Computer Force sells products in the following categories:</p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
+          <div class="col">
+            <a href="products.html?category=audio" class="category-item">
+              <img src="images/categories/audio.jpg" alt="High quality audio systems and headphones">
+              <h2 class="h5 mt-2">Audio</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a href="products.html?category=computers" class="category-item">
+              <img src="images/categories/computers.jpg" alt="Desktop and workstation computers">
+              <h2 class="h5 mt-2">Computers</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a href="products.html?category=graphics-cards" class="category-item">
+              <img src="images/categories/graphics-cards.jpg" alt="Powerful graphics cards for gaming and design">
+              <h2 class="h5 mt-2">Graphics cards</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a href="products.html?category=laptops" class="category-item">
+              <img src="images/categories/laptops.jpg" alt="Portable laptops and notebooks">
+              <h2 class="h5 mt-2">Laptops</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a href="products.html?category=monitors" class="category-item">
+              <img src="images/categories/monitors.jpg" alt="HD and 4K monitors">
+              <h2 class="h5 mt-2">Monitors</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a href="products.html?category=monitors" class="category-item">
+              <img src="images/categories/networking.jpg" alt="HD and 4K monitors">
+              <h2 class="h5 mt-2">Networking</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a href="products.html?category=monitors" class="category-item">
+              <img src="images/categories/peripherals.jpg" alt="HD and 4K monitors">
+              <h2 class="h5 mt-2">Peripherals</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a href="products.html?category=monitors" class="category-item">
+              <img src="images/categories/printing-scanning.jpg" alt="HD and 4K monitors">
+              <h2 class="h5 mt-2">Printing & Scanning</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a href="products.html?category=monitors" class="category-item">
+              <img src="images/categories/software.jpg" alt="HD and 4K monitors">
+              <h2 class="h5 mt-2">Software</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a href="products.html?category=monitors" class="category-item">
+              <img src="images/categories/storage.jpg" alt="HD and 4K monitors">
+              <h2 class="h5 mt-2">Storage</h2>
+            </a>
+          </div>
+          <div class="col">
+            <a href="products.html?category=tablets" class="category-item">
+              <img src="images/categories/tablets.jpg" alt="Touchscreen tablets and accessories">
+              <h2 class="h5 mt-2">Tablets</h2>
+            </a>
+          </div>
+        </div>
+      </main>
+
+      <aside class="col-lg-3 col-md-4 d-none d-md-block" aria-label="Sidebar">
+        <div class="sidebar-cart sticky-top" style="top: 100px;">
+          <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+              <h2 class="h5 mb-0"><i class="fas fa-shopping-cart me-2" aria-hidden="true"></i>Your Shopping Cart</h2>
+            </div>
+            <div class="card-body p-0">
+              <div class="p-4 text-center">
+                <p class="text-muted mb-0">Your cart is empty</p>
+              </div>
+            </div>
+
+            <div class="card-header bg-warning text-dark">
+              <h2 class="h5 mb-0"><i class="fas fa-shopping-bag me-2" aria-hidden="true"></i>Current Purchases</h2>
+            </div>
+            <div class="card-body p-0">
+              <table class="table mb-0 purchase-table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="ps-3">Item</th>
+                    <th scope="col" class="text-end pe-3">Price(AUD)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="ps-3">Test Item 1</td>
+                    <td class="text-end pe-3">$1000</td>
+                  </tr>
+                  <tr>
+                    <td class="ps-3"><strong>Total</strong></td>
+                    <td class="text-end pe-3"><strong>$1000</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="p-3">
+                <button class="btn btn-primary w-100">Checkout Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light mt-5 py-5">
+    <div class="container text-center">
+      <img src="images/logo.PNG" alt="Computer Force" style="max-height: 50px;" class="mb-3 bg-white p-1">
+      <p>Your Trusted Computer Supplier since 1992</p>
+      <div class="mb-3">
+        <a href="#" class="text-light mx-2" aria-label="Visit our Facebook"><i class="fab fa-facebook fs-4"></i></a>
+        <a href="#" class="text-light mx-2" aria-label="Visit our Twitter"><i class="fab fa-twitter fs-4"></i></a>
+        <a href="#" class="text-light mx-2" aria-label="Visit our Instagram"><i class="fab fa-instagram fs-4"></i></a>
+      </div>
+      <p class="small mb-0">COPYRIGHT &copy; 2026 Computer Force Pty Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="computerForce.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Home - Computer Force</title>
+</head>
+
+<body>
+  <header class="container-fluid text-center py-3 bg-light border-bottom">
+    <a href="index.html" class="text-decoration-none">
+      <img src="images/logo.PNG" alt="Computer Force Logo - Quality computing since 1992" style="max-height: 80px;">
+    </a>
+  </header>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Main navigation">
+    <div class="container-fluid custom-nav-container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
+        aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-right-icons">
+        <form class="search-box d-none d-lg-flex" role="search" onsubmit="return false;">
+          <input type="text" id="searchInput" placeholder="Search..." aria-label="Search products">
+          <button type="button" onclick="searchProducts()" aria-label="Submit search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+
+        <a class="cart-icon-link" href="shoppingCart.html" aria-label="View shopping cart"
+          onclick="if(window.innerWidth < 992) { toggleMobileCart(); return false; }">
+          <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobileCartModal" class="mobile-cart-modal d-lg-none" style="display: none;" role="dialog"
+    aria-labelledby="cartModalTitle">
+    <div class="mobile-cart-content">
+      <div class="mobile-cart-header">
+        <h2 id="cartModalTitle" class="h5 mb-0"><i class="fas fa-shopping-cart me-2" aria-hidden="true"></i>Your
+          Shopping Cart</h2>
+        <button class="close-cart-btn" onclick="toggleMobileCart()" aria-label="Close cart">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="mobile-cart-body p-3 text-center">
+        <i class="fas fa-shopping-cart fa-4x text-muted mb-4" aria-hidden="true"></i>
+        <p class="h5 text-muted mb-3">Your cart is empty</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-3">
+    <div class="row">
+      <main class="col-lg-9 col-md-8">
+        <div class="container py-4">
+          <h1 class="text-primary">Register</h1>
+
+          <div id="registrationSuccess" class="card text-center border-success mb-4" style="display: none;">
+            <div class="card-header bg-success text-white">
+              <h2 class="h3 mb-0"><i class="fas fa-check-circle me-2" aria-hidden="true"></i>Registration Successful!
+              </h2>
+            </div>
+            <div class="card-body py-5">
+              <div class="mb-4">
+                <i class="fas fa-user-check fa-5x text-success mb-4" aria-hidden="true"></i>
+                <h3 class="text-success">Welcome to Computer Force!</h3>
+                <p class="lead" id="successMessage">Your account has been successfully created.</p>
+                <div class="alert alert-info mt-3" id="accountDetails"></div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-md-4 mb-3"><a href="index.html" class="btn btn-primary btn-lg w-100">Go to Homepage</a>
+                </div>
+                <div class="col-md-4 mb-3"><a href="products.html" class="btn btn-success btn-lg w-100">Browse
+                    Products</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card shadow-sm" id="registrationFormContainer">
+            <div class="card-header bg-primary text-white">
+              <h2 class="h3 mb-0">Member Registration</h2>
+            </div>
+            <div class="card-body p-4">
+              <p class="mb-4">Create your Computer Force account to enjoy member benefits.</p>
+
+              <div id="errorAlert" class="alert alert-danger" style="display: none;" role="alert">
+                <i class="fas fa-exclamation-triangle me-2" aria-hidden="true"></i>
+                <span id="errorMessage"></span>
+              </div>
+
+              <form id="registrationForm" class="registrationForm">
+                <h3 class="h5 mb-3 border-bottom pb-2">Account Information</h3>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="username" class="form-label fw-bold">Username <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="username" name="username" required minlength="3"
+                      maxlength="50">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label fw-bold">Email Address <span
+                        class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email" required maxlength="100">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="password" class="form-label fw-bold">Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="password" name="password" required minlength="6">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="confirmPassword" class="form-label fw-bold">Confirm Password <span
+                        class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                    <div class="form-check mt-2">
+                      <input class="form-check-input" type="checkbox" id="showPassword">
+                      <label class="form-check-label" for="showPassword">Show passwords</label>
+                    </div>
+                  </div>
+                </div>
+
+                <h3 class="h5 mb-3 mt-4 border-bottom pb-2">Personal Information</h3>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label fw-bold">First Name <span
+                        class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="surname" class="form-label fw-bold">Surname <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="surname" name="surname" required>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="gender" class="form-label fw-bold">Gender <span class="text-danger">*</span></label>
+                    <select class="form-select" id="gender" name="gender" required>
+                      <option value="">Select Gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="dateOfBirth" class="form-label fw-bold">Date of Birth</label>
+                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+                  </div>
+                </div>
+
+                <h3 class="h5 mb-3 mt-4 border-bottom pb-2">Address Information</h3>
+                <div class="mb-3">
+                  <label for="address" class="form-label fw-bold">Address <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="address" name="address" required>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-6">
+                    <label for="suburb" class="form-label fw-bold">Suburb <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="suburb" name="suburb" required>
+                  </div>
+                  <div class="col-md-3">
+                    <label for="postcode" class="form-label fw-bold">Postcode <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="postcode" name="postcode" required maxlength="4"
+                      pattern="\d{4}">
+                  </div>
+                  <div class="col-md-3">
+                    <label for="state" class="form-label fw-bold">State <span class="text-danger">*</span></label>
+                    <select class="form-select" id="state" name="state" required>
+                      <option value="">Select State</option>
+                      <option value="NSW">NSW</option>
+                      <option value="VIC">VIC</option>
+                      <option value="QLD">QLD</option>
+                      <option value="WA">WA</option>
+                      <option value="SA">SA</option>
+                      <option value="TAS">TAS</option>
+                      <option value="ACT">ACT</option>
+                      <option value="NT">NT</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label for="phone" class="form-label fw-bold">Phone Number</label>
+                  <input type="tel" class="form-control" id="phone" name="phone">
+                </div>
+
+                <div class="mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="agreeTerms" required>
+                    <label class="form-check-label" for="agreeTerms">
+                      I agree to the <a href="privacy.html">Terms and Conditions</a>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-secondary" onclick="clearRegistrationForm()"
+                    aria-label="Clear all form fields">
+                    <i class="fas fa-eraser me-2" aria-hidden="true"></i>Clear Form
+                  </button>
+                  <button type="submit" class="btn btn-primary px-4">
+                    <i class="fas fa-user-plus me-2" aria-hidden="true"></i>Create Account
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="col-lg-3 col-md-4 d-none d-md-block" aria-label="Shopping sidebar">
+        <div class="sidebar-cart sticky-top" style="top: 80px;">
+          <div class="card mb-3">
+            <div class="card-header bg-primary text-white">
+              <h2 class="h5 mb-0"><i class="fas fa-shopping-cart me-2" aria-hidden="true"></i>Your Shopping Cart</h2>
+            </div>
+            <div class="card-body p-0">
+              <div class="p-4 text-center">
+                <p class="text-muted mb-0">Your cart is empty</p>
+              </div>
+            </div>
+            <div class="card-header bg-warning text-dark">
+              <h2 class="h5 mb-0">Current Purchases</h2>
+            </div>
+            <div class="card-body">
+              <table class="table table-sm purchase-table mb-0">
+                <thead>
+                  <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col" class="text-end">Price(AUD)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Test Item 1</td>
+                    <td class="text-end">$1000</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Total</strong></td>
+                    <td class="text-end"><strong>$1000</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-light mt-5 py-5">
+    <div class="container text-center">
+      <img src="images/logo.PNG" alt="Computer Force Logo" style="max-height: 50px;" class="mb-3 bg-white p-1">
+      <p>Your Trusted Computer Supplier since 1992</p>
+      <div class="mb-3">
+        <a href="#" class="text-light mx-2" aria-label="Facebook"><i class="fab fa-facebook fs-4"></i></a>
+        <a href="#" class="text-light mx-2" aria-label="Twitter"><i class="fab fa-twitter fs-4"></i></a>
+        <a href="#" class="text-light mx-2" aria-label="Instagram"><i class="fab fa-instagram fs-4"></i></a>
+      </div>
+      <p class="small mb-0">COPYRIGHT &copy; 2026 Computer Force Pty Ltd.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/0dd329fe0a.js" crossorigin="anonymous"></script>
+  <script src="computerForce.js"></script>
+  <script>
+    function toggleMobileCart() {
+      const modal = document.getElementById('mobileCartModal');
+      if (modal.style.display === 'block' || modal.style.display === '') {
+        modal.style.display = 'none';
+      } else {
+        modal.style.display = 'block';
+      }
+    }
+
+    function searchProducts() {
+      const searchInput = document.getElementById('searchInput');
+      const searchTerm = searchInput.value.trim();
+
+      if (!searchTerm) {
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-warning alert-dismissible fade show alert-fixed';
+        alertDiv.style.marginTop = '80px';
+        alertDiv.innerHTML = `
+          <i class="fas fa-exclamation-circle me-2"></i>
+          <strong>Search empty!</strong> Please enter a search term.
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        `;
+        document.body.appendChild(alertDiv);
+
+        setTimeout(() => {
+          if (alertDiv.parentNode) {
+            alertDiv.remove();
+          }
+        }, 4000);
+
+        searchInput.focus();
+        return;
+      }
+
+      window.location.href = 'searchResults.html?q=' + encodeURIComponent(searchTerm);
+    }
+
+    // 静的HTML用の登録機能
+    function simulateRegistration(formData) {
+      // 実際の登録機能の代わりに、成功メッセージを表示
+      const successDiv = document.getElementById('registrationSuccess');
+      const formContainer = document.getElementById('registrationFormContainer');
+      const successMessage = document.getElementById('successMessage');
+      const accountDetails = document.getElementById('accountDetails');
+
+      // アカウント詳細を設定
+      const registrationDate = new Date().toLocaleDateString('en-AU', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+
+      accountDetails.innerHTML = `
+        <h5><i class="fas fa-info-circle me-2"></i>Your Account Details:</h5>
+        <p class="mb-1"><strong>Username:</strong> ${formData.username}</p>
+        <p class="mb-1"><strong>Email:</strong> ${formData.email}</p>
+        <p class="mb-1"><strong>Name:</strong> ${formData.firstName} ${formData.surname}</p>
+        <p class="mb-0"><strong>Registration Date:</strong> ${registrationDate}</p>
+      `;
+
+      successMessage.textContent = `Welcome ${formData.firstName}! Your account has been successfully created.`;
+
+      // フォームを非表示、成功メッセージを表示
+      formContainer.style.display = 'none';
+      successDiv.style.display = 'block';
+
+      // 成功メッセージまでスクロール
+      successDiv.scrollIntoView({ behavior: 'smooth' });
+
+      // 成功アラートを表示
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-success alert-dismissible fade show alert-fixed';
+      alertDiv.style.marginTop = '80px';
+      alertDiv.innerHTML = `
+        <i class="fas fa-check-circle me-2"></i>
+        <strong>Registration Successful!</strong> Welcome to Computer Force!
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      `;
+      document.body.appendChild(alertDiv);
+
+      setTimeout(() => {
+        if (alertDiv.parentNode) {
+          alertDiv.remove();
+        }
+      }, 5000);
+
+      console.log('Registration successful for:', formData);
+      return true;
+    }
+
+    // バリデーション関数
+    function validateForm() {
+      const form = document.getElementById('registrationForm');
+      const errorAlert = document.getElementById('errorAlert');
+      const errorMessage = document.getElementById('errorMessage');
+      const errors = [];
+
+      // 各フィールドのバリデーション
+      const username = document.getElementById('username').value.trim();
+      if (username.length < 3) {
+        errors.push('Username must be at least 3 characters long.');
+      }
+
+      const email = document.getElementById('email').value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        errors.push('Please enter a valid email address.');
+      }
+
+      const password = document.getElementById('password').value;
+      if (password.length < 6) {
+        errors.push('Password must be at least 6 characters long.');
+      }
+
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      if (password !== confirmPassword) {
+        errors.push('Passwords do not match.');
+      }
+
+      const firstName = document.getElementById('firstName').value.trim();
+      if (!firstName) {
+        errors.push('First name is required.');
+      }
+
+      const surname = document.getElementById('surname').value.trim();
+      if (!surname) {
+        errors.push('Surname is required.');
+      }
+
+      const gender = document.getElementById('gender').value;
+      if (!gender) {
+        errors.push('Please select a gender.');
+      }
+
+      const address = document.getElementById('address').value.trim();
+      if (!address) {
+        errors.push('Address is required.');
+      }
+
+      const suburb = document.getElementById('suburb').value.trim();
+      if (!suburb) {
+        errors.push('Suburb is required.');
+      }
+
+      const postcode = document.getElementById('postcode').value;
+      if (!/^\d{4}$/.test(postcode)) {
+        errors.push('Please enter a valid 4-digit postcode.');
+      }
+
+      const state = document.getElementById('state').value;
+      if (!state) {
+        errors.push('Please select a state.');
+      }
+
+      const phone = document.getElementById('phone').value;
+      if (phone && !/^[0-9\s\(\)\+\-]{8,20}$/.test(phone)) {
+        errors.push('Please enter a valid phone number.');
+      }
+
+      const dateOfBirth = document.getElementById('dateOfBirth').value;
+      if (dateOfBirth) {
+        const dobDate = new Date(dateOfBirth);
+        const today = new Date();
+        if (dobDate > today) {
+          errors.push('Date of birth cannot be in the future.');
+        }
+      }
+
+      const agreeTerms = document.getElementById('agreeTerms').checked;
+      if (!agreeTerms) {
+        errors.push('You must agree to the Terms and Conditions and Privacy Policy.');
+      }
+
+      if (errors.length > 0) {
+        errorMessage.innerHTML = errors.join('<br>');
+        errorAlert.style.display = 'block';
+        return false;
+      }
+
+      errorAlert.style.display = 'none';
+      return true;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log('Registration page loaded');
+
+
+
+      const registrationForm = document.getElementById('registrationForm');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+      const showPasswordCheckbox = document.getElementById('showPassword');
+      const phoneInput = document.getElementById('phone');
+      const postcodeInput = document.getElementById('postcode');
+      const dateOfBirthInput = document.getElementById('dateOfBirth');
+
+      // 必須フィールドにマークを追加
+      document.querySelectorAll('[required]').forEach(input => {
+        const label = input.closest('.row, .mb-3')?.querySelector('label[for="' + input.id + '"]') ||
+          input.previousElementSibling;
+        if (label && label.classList.contains('form-label')) {
+          label.classList.add('required');
+        }
+      });
+
+      // パスワード表示/非表示
+      if (showPasswordCheckbox) {
+        showPasswordCheckbox.addEventListener('change', function () {
+          const type = this.checked ? 'text' : 'password';
+          passwordInput.type = type;
+          confirmPasswordInput.type = type;
+        });
+      }
+
+      // パスワード確認のリアルタイムバリデーション
+      if (confirmPasswordInput) {
+        confirmPasswordInput.addEventListener('input', function () {
+          if (passwordInput.value !== this.value && this.value) {
+            this.setCustomValidity('Passwords do not match');
+            this.classList.add('is-invalid');
+          } else {
+            this.setCustomValidity('');
+            this.classList.remove('is-invalid');
+          }
+        });
+      }
+
+      // 電話番号フォーマット
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function () {
+          this.value = this.value.replace(/[^\d\s\(\)\+\-]/g, '');
+        });
+      }
+
+      // 郵便番号フォーマット
+      if (postcodeInput) {
+        postcodeInput.addEventListener('input', function () {
+          this.value = this.value.replace(/\D/g, '').substring(0, 4);
+        });
+      }
+
+      // 生年月日の最大値を設定
+      if (dateOfBirthInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateOfBirthInput.max = today;
+      }
+
+      // フォーム送信処理
+      registrationForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (!validateForm()) {
+          return false;
+        }
+
+        if (!confirm('Are you sure you want to submit the registration form?')) {
+          return false;
+        }
+
+        // フォームデータを収集
+        const formData = {
+          username: document.getElementById('username').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          password: document.getElementById('password').value,
+          firstName: document.getElementById('firstName').value.trim(),
+          surname: document.getElementById('surname').value.trim(),
+          gender: document.getElementById('gender').value,
+          dateOfBirth: document.getElementById('dateOfBirth').value,
+          address: document.getElementById('address').value.trim(),
+          suburb: document.getElementById('suburb').value.trim(),
+          postcode: document.getElementById('postcode').value,
+          state: document.getElementById('state').value,
+          phone: document.getElementById('phone').value.trim()
+        };
+
+        // 登録処理をシミュレート
+        simulateRegistration(formData);
+        return false;
+      });
+
+      // フィールドバリデーション
+      const inputs = registrationForm.querySelectorAll('input, select');
+      inputs.forEach(input => {
+        input.addEventListener('blur', function () {
+          validateField(this);
+        });
+      });
+
+      function validateField(field) {
+        if (field.hasAttribute('required') && !field.value.trim()) {
+          field.classList.add('is-invalid');
+          return false;
+        }
+
+        switch (field.id) {
+          case 'email':
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (field.value && !emailPattern.test(field.value)) {
+              field.classList.add('is-invalid');
+              return false;
+            }
+            break;
+
+          case 'postcode':
+            if (field.value && !/^\d{4}$/.test(field.value)) {
+              field.classList.add('is-invalid');
+              return false;
+            }
+            break;
+
+          case 'dateOfBirth':
+            if (field.value) {
+              const selectedDate = new Date(field.value);
+              const today = new Date();
+              if (selectedDate > today) {
+                field.classList.add('is-invalid');
+                return false;
+              }
+            }
+            break;
+        }
+
+        field.classList.remove('is-invalid');
+        return true;
+      }
+    });
+  </script>
+</body>
+
+</html>
