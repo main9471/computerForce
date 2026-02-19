@@ -181,14 +181,22 @@ footer i:hover,
   color: #ffffff !important;
 }
 
+footer {
+  letter-spacing: 0.5px;
+}
+
+/* ロゴを左に寄せる */
+#footerLogo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* centerから変更 */
+  transition: transform 0.3s ease;
+}
+
 footer i:hover {
   color: #4dabf7;
   cursor: pointer;
-}
-
-
-footer h2.text-primary {
-  color: #6fb2ff !important;
 }
 
 footer .text-light,
@@ -203,6 +211,25 @@ footer a.text-decoration-none:hover {
 
 footer i {
   color: #ffffff !important;
+}
+
+.contact-info-text {
+  font-size: 0.9rem;
+  color: #adb5bd;
+}
+
+/* コピーライトエリアの装飾 */
+.copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  margin-top: 20px;
+  color: #6c757d;
+  text-align: left;
+  /* 明示的に左寄せ */
+}
+
+.copyright strong {
+  color: #f8f9fa;
 }
 
 .purchase-table {
