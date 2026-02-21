@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Home - Computer Force</title>
+</head>
+
+<body>
+  <header class="container-fluid text-center py-3 bg-light border-bottom">
+    <a href="index.html" class="text-decoration-none">
+      <img src="images/logo.PNG" alt="Computer Force Logo - Quality computing since 1992" style="max-height: 80px;">
+    </a>
+  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" aria-label="Main navigation">
+    <div class="container-fluid custom-nav-container">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent"
+        aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="mai.html">Mai Nogami</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-right-icons d-flex align-items-center">
+        <form class="search-box d-none d-lg-flex me-2" role="search" onsubmit="return false;">
+          <input type="text" id="searchInput" placeholder="Search..." aria-label="Search products">
+          <button type="button" onclick="searchProducts()" aria-label="Search products">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+        </form>
+
+        <button class="cart-icon-link btn btn-link p-0 border-0 position-relative text-white" type="button"
+          data-bs-toggle="collapse" data-bs-target="#mobileCartContent" aria-expanded="false"
+          aria-controls="mobileCartContent">
+          <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+          <span class="cart-badge">2</span>
+        </button>
+      </div>
+
+      <div class="collapse d-lg-none w-100" id="mobileCartContent">
+        <div class="mt-2 p-3 bg-light rounded text-dark border shadow-sm">
+          <h2 class="h5 fw-bold border-bottom pb-2">Purchases</h2>
+          <table class="table table-sm purchase-table mb-3">
+            <thead>
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col" class="text-end">Price(AUD)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Test Item 1</td>
+                <td class="text-end">$1000</td>
+              </tr>
+              <tr>
+                <td>Test Item 2</td>
+                <td class="text-end">$500</td>
+              </tr>
+              <tr class="fw-bold border-top">
+                <td>Total</td>
+                <td class="text-end">$1500</td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="button" class="btn btn-primary w-100">Go to Checkout</button>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+  <h1 class="name">Mai Nogami</h1>
+  <p>Hi, I’m Mai!
+
+    Originally from Japan, I’ve been living in Australia for four years now.<br> I’m fully settled into the lifestyle
+    here
+    and love spending my free time exploring local cafes or relaxing at the beach</p>
+
+</body>
+
+</html>
